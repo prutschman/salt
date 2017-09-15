@@ -109,6 +109,8 @@ def present(name,
     elif next(six.itervalues(can_assemble)):
         do_assemble = True
         verb = 'assembled'
+        # "--chunk" is not a valid parameter to mdadm in assemble mode
+        kwargs.pop('chunk', None)
     else:
         do_assemble = False
         verb = 'created'
